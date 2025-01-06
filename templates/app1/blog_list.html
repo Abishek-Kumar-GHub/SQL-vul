@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fc;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        li {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            ul {
+                width: 90%;
+            }
+
+            li {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Blog List</h1>
+
+    <ul>
+        {% for blog in blogs %}
+        <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+        <p>&copy; 2025 Cyber Security Project. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Optional: Fade in the blog list after loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogList = document.querySelector('ul');
+            blogList.style.opacity = 0;
+            setTimeout(() => {
+                blogList.style.transition = 'opacity 1s ease-in-out';
+                blogList.style.opacity = 1;
+            }, 500); // Delay to create a smooth fade-in effect
+        });
+    </script>
+
+</body>
+</html>
