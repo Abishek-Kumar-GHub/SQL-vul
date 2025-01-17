@@ -22,7 +22,6 @@ from app1 import views  # Import views from app1
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),  # Root URL mapped to homepage view
-    path('login/', views.vulnerable_login, name='login'),
-    path('detail/<int:pk>/', views.blog_detail, name='blog_detail'),
+    path('login/', views.login_view, name='login'),
     path('', include('app1.urls')),
 ]

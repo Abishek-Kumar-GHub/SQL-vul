@@ -1,9 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>E-Commerce Homepage</title>
     <style>
         /* Global Styles */
         body {
@@ -15,26 +18,45 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            justify-content: flex-start;
+            height: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            animation: fadeIn 2s ease-in-out;
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            /* Make sure header is a positioned container for the login button */
         }
 
-        p {
-            font-size: 1.5em;
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Position the Admin Login to the top right */
+        .hero {
             margin-top: 20px;
-            animation: fadeIn 2s ease-in-out;
-            animation-delay: 1s;
+            padding: 30px 15px;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
         }
 
-        p a {
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin: 20px 0;
+        }
+
+        .hero a {
             text-decoration: none;
             font-size: 1.2em;
             color: #f2f2f2;
@@ -44,79 +66,164 @@
             box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
             display: inline-block;
+            position: absolute;
+            top: 20px;
+            /* Position it 20px from the top */
+            right: 20px;
+            /* Position it 20px from the right */
         }
 
-        p a:hover {
+        .hero a:hover {
             background: #6a11cb;
             transform: scale(1.1);
             box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
         }
 
-        footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
+        .products {
+            padding: 30px;
+            text-align: left;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .products h2 {
             text-align: center;
-            font-size: 0.9em;
-            color: #f2f2f2;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            margin-bottom: 20px;
         }
 
-        footer:hover {
-            opacity: 1;
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        /* Animation for fading in text */
+        .product-card {
+            background: white;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card .info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card .info h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .product-card .info p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #666;
+        }
+
+        .product-card .info a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background: #2575fc;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .product-card .info a:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+        }
+
         @keyframes fadeIn {
-            0% {
+            from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-            100% {
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
-            }
-
-            p {
-                font-size: 1.2em;
-            }
-
-            p a {
-                padding: 12px 25px;
-                font-size: 1.1em;
-            }
-        }
     </style>
 </head>
+
 <body>
-    <h1>Welcome to the Homepage!</h1>
-    <p><a href="{% url 'login' %}">Go to Login</a></p>
+    <header>
+        <h1>ShopSphere</h1>
+    </header>
+
+    <div class="hero">
+        <h2>Your World to Explore Amazing Products</h2>
+        <p>Discover exclusive deals, new arrivals, and all-time favorites.</p>
+        <a href="{% url 'login' %}">Admin login</a>
+    </div>
+
+    <div class="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{% static 'images/laptop.jpg' %}" alt="Product 1">
+                <div class="info">
+                    <h3>Laptops</h3>
+                    <p>Starts 29999 INR</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'images/mobile.jpeg' %}" alt="Product 2">
+                <div class="info">
+                    <h3>Mobile</h3>
+                    <p>Starts 4999 INR</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'images/headphone.jpeg' %}" alt="Product 3">
+                <div class="info">
+                    <h3>Headphones</h3>
+                    <p>Starts 399 INR</p>
+                    <a href="#">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Cyber Security Project. All rights reserved.</p>
+        <p>&copy; 2025 ShopSphere. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Script to display a welcome message after a short delay
-        setTimeout(() => {
-            alert("Welcome to the homepage! Explore securely.");
-        }, 500); // 500ms delay
-
-        // Additional interactivity for footer hover
-        document.querySelector('footer').addEventListener('mouseenter', () => {
-            document.querySelector('footer').style.opacity = 1;
-        });
-        document.querySelector('footer').addEventListener('mouseleave', () => {
-            document.querySelector('footer').style.opacity = 0.7;
-        });
-    </script>
 </body>
+
 </html>

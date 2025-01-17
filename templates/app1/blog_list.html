@@ -3,80 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog List</title>
+    <title>Password List</title>
     <style>
         /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f7fc;
-            color: #333;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
             height: 100vh;
+            padding-left: 20px;
         }
 
         h1 {
-            margin-top: 50px;
+            margin-top: 20px;
             font-size: 3em;
-            color: #2c3e50;
+            color: #f2f2f2;
         }
 
         ul {
             list-style: none;
             padding: 0;
-            margin-top: 30px;
-            width: 80%;
+            margin: 20px 0;
+            width: 90%;
             max-width: 800px;
         }
 
         li {
-            background-color: #fff;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             margin-bottom: 15px;
             padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, box-shadow 0.3s;
         }
 
         li:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
         }
 
         a {
             text-decoration: none;
-            color: #3498db;
+            color: #ffeb3b;
             font-size: 1.2em;
-            font-weight: 600;
-            display: block;
-            transition: color 0.3s;
+            font-weight: bold;
         }
 
         a:hover {
-            color: #2980b9;
+            color: #ffd700;
+        }
+
+        .admin-info {
+            position: absolute;
+            top: 110px;
+            left: 20px;
+            color: #f2f2f2;
+            font-size: 1.2em;
+        }
+
+        .admin-info p {
+            margin: 0;
+            padding: 5px 0;
         }
 
         footer {
-            position: absolute;
-            bottom: 20px;
+            margin-top: auto;
             width: 100%;
             text-align: center;
             font-size: 0.9em;
-            color: #7f8c8d;
+            color: #d1d1d1;
+            padding: 10px 0;
         }
 
         footer a {
-            color: #3498db;
+            color: #ffeb3b;
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         footer a:hover {
-            color: #2980b9;
+            color: #ffd700;
         }
 
         /* Mobile Responsiveness */
@@ -86,18 +97,26 @@
             }
 
             ul {
-                width: 90%;
+                width: 95%;
             }
 
             li {
                 padding: 10px;
+            }
+
+            .admin-info {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                margin-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <h1>Blog List</h1>
+    <h1>Password List</h1>
 
     <ul>
         {% for blog in blogs %}
@@ -105,21 +124,15 @@
         {% endfor %}
     </ul>
 
+    <!-- Admin info displayed on left side -->
+    <div class="admin-info">
+        <p>Admin: <strong>abishek</strong></p>
+        <p>Password: <code>pbkdf2_sha256$260000$wbi05MbQdMikMXIYHSvb2N$7aWH0FxKpyxwlP7OlFoFJvN7SiIZbrjuwNr0ac+dcEc=</code></p>
+    </div>
+
     <footer>
         <p>&copy; 2025 Cyber Security Project. All rights reserved. | <a href="#">Privacy Policy</a></p>
     </footer>
-
-    <script>
-        // Optional: Fade in the blog list after loading
-        document.addEventListener('DOMContentLoaded', function() {
-            const blogList = document.querySelector('ul');
-            blogList.style.opacity = 0;
-            setTimeout(() => {
-                blogList.style.transition = 'opacity 1s ease-in-out';
-                blogList.style.opacity = 1;
-            }, 500); // Delay to create a smooth fade-in effect
-        });
-    </script>
 
 </body>
 </html>

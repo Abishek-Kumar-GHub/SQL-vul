@@ -4,12 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .container label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            display: block;
+            color: #f0f0f0;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .container button {
+            background: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .container button:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        .container p.error {
+            color: #ff4d4d;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+            color: #f2f2f2;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        footer:hover {
+            opacity: 1;
+        }
+
+        /* Animation for fading in text */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <h1>Login</h1>
     <div class="container">
-        <h1>Login</h1>
         {% if error %}
             <p class="error">{{ error }}</p>
         {% endif %}
@@ -24,5 +121,19 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Cyber Security Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Script for additional interactivity or effects
+        document.querySelector('footer').addEventListener('mouseenter', () => {
+            document.querySelector('footer').style.opacity = 1;
+        });
+        document.querySelector('footer').addEventListener('mouseleave', () => {
+            document.querySelector('footer').style.opacity = 0.7;
+        });
+    </script>
 </body>
 </html>
