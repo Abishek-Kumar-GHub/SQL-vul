@@ -89,7 +89,7 @@ if user is not None:
     login(request, user)
 Using the authenticate() method ensures that user input is properly escaped and prevents SQL Injection attacks.
 ```
-safecode.py have the safe method to do the application without sql injection vulnerability. Copy that file and paste in views.py to domonstrate the mitigation
+*safecode.py* have the safe method to do the application without sql injection vulnerability. Copy that file and paste in views.py to domonstrate the mitigation
 
 ## Contributing
 Feel free to open issues or submit pull requests for improvements. If you want to help fix the vulnerability or add additional features, your contributions are welcome!
