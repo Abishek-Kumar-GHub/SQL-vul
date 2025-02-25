@@ -87,7 +87,7 @@ user = authenticate(request, username=username, password=password)
 if user is not None:
     # Proceed with login
     login(request, user)
-Using the authenticate() method ensures that user input is properly escaped and prevents SQL Injection attacks.
+    return redirect('blog_list')
 ```
 **safecode.py** have the safe method to do the application without sql injection vulnerability. Copy that file and paste in views.py to domonstrate the mitigation
 
